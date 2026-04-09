@@ -1,18 +1,25 @@
 ---
 name: antalpha-ai-setup
 description: >
-  Install and configure the Antalpha Skills MCP server for Web3 trading, smart money tracking, prediction markets, and DeFi analytics. Provides 60+ tools for DEX swaps, smart money signals, Polymarket copy trading, Hyperliquid perpetuals, DeFi discovery, and settlement prediction. Use when the user wants to set up AntAlpha Skills MCP, connect to on-chain data, trade DEX, track whale wallets, or install Web3 analytics tools.
-version: 1.0.0
+  Install and configure the Antalpha Skills MCP server. Provides 60+ Web3 tools for DEX swaps, smart money tracking, Polymarket prediction markets, Hyperliquid perpetuals, and DeFi analytics.
+version: 1.1.0
 author: antalpha
+homepage: https://www.antalpha.com/
 ---
 
 # AntAlpha Skills MCP Server Setup
 
 Connect your AI agent to Antalpha's Web3 unified gateway — 60+ tools covering DEX swaps, smart money signals, Polymarket prediction markets, Hyperliquid perpetual trading, DeFi investment discovery, and EVM/BTC settlement intelligence.
 
+## ⚡ Quick Install (OpenClaw)
+
+```bash
+clawhub install antalpha-ai-setup
+```
+
 ## Prerequisites
 
-- An MCP-compatible client (Claude Code, Claude Desktop, Cursor, Windsurf, etc.)
+- An MCP-compatible client (Claude Code, Claude Desktop, Cursor, Windsurf, OpenClaw, etc.)
 
 ## Step 1 — Add the MCP Server
 
@@ -72,15 +79,14 @@ codex mcp add antalpha --url https://mcp-skills.ai.antalpha.com/mcp
 }
 ```
 
-**OpenClaw and other stdio-only agents** (uses `mcp-remote` as a bridge):
+**OpenClaw** (native Streamable HTTP support, no bridge needed):
 
 ```json
 {
   "mcp": {
     "servers": {
       "antalpha": {
-        "command": "npx",
-        "args": ["-y", "mcp-remote", "https://mcp-skills.ai.antalpha.com/mcp"]
+        "url": "https://mcp-skills.ai.antalpha.com/mcp"
       }
     }
   }
@@ -95,9 +101,15 @@ After adding the server, register your agent to receive an API key:
 2. It will return an `agent_id` (UUID) and a one-time `api_key`
 3. **Save the `api_key`** — it is shown only once
 
-When API key authentication is enabled on the server, include the `api_key` in the `x-antalpha-agent-api-key` HTTP header on all subsequent requests. No OAuth flows, no login pages — just a single key to persist.
+**About API Key Authentication:**
 
-If your agent supports MCP headers, configure the `x-antalpha-agent-api-key` header with the returned `api_key`.
+The server currently operates in **open mode** — most tools work without an API key. However, we recommend registering an agent anyway because:
+
+- Some tools (especially `smart-money-*` with private watchlists) require authentication
+- Rate limits are higher for authenticated agents
+- Future updates may enforce authentication for all tools
+
+If your agent supports MCP headers, configure the `x-antalpha-agent-api-key` header with the returned `api_key` for full access.
 
 ## Step 3 — Verify
 
@@ -116,10 +128,10 @@ Try one of these prompts:
 | "What's the current quote for 1 ETH to USDC on Ethereum?" | `swap-quote` |
 | "Show me the latest high-confidence smart money signals" | `smart-money-signal` |
 | "What are the hottest crypto markets on Polymarket right now?" | `poly-trending` |
-| "Show me my Hyperliquid positions at 0x..." | `hl-positions` |
+| "Show me my Hyperliquid positions at 0x\<your_wallet_address\>" | `hl-positions` |
 | "Discover DeFi opportunities with low risk and APY above 5%" | `investor_discover` |
 | "What's the gas situation on Arbitrum?" | `settlement-gas-prediction` |
-| "Show all token balances for 0x... across every chain" | `multi-source-token-list` |
+| "Show all token balances for 0x\<your_wallet_address\> across every chain" | `multi-source-token-list` |
 
 ## Available Tools (60+)
 
@@ -189,9 +201,15 @@ Try one of these prompts:
 
 ## Troubleshooting
 
-- **"Agent validation failed"**: Call `antalpha-register` first and persist the returned `agent_id` and `api_key`. When the server has `AGENT_API_KEY_AUTH_ENABLED=true`, send the `api_key` on each MCP HTTP request using the `x-antalpha-agent-api-key` header.
+- **"Agent validation failed"**: Call `antalpha-register` first and persist the returned `agent_id` and `api_key`. Then configure the `x-antalpha-agent-api-key` header with your `api_key`.
 - **No tools available**: Verify the MCP server URL is exactly `https://mcp-skills.ai.antalpha.com/mcp` (note the `/mcp` path).
-- **Rate limited**: The tool call frequency is limited per IP. Wait a moment and retry, or contact the service provider to adjust limits.
+- **Rate limited**: The tool call frequency is limited per IP. Wait a moment and retry, or register an agent for higher limits.
 - **Smart Swap not filling**: Smart Swap currently only supports `chain_id=1` (Ethereum mainnet) with `engine=1inch`. The order uses a Dutch auction mechanism — it may take 3–10 minutes to fill or auto-expire.
 - **Hyperliquid write tools require a private key**: Tools like `hl-limit-order` require your `agent_key` (Hyperliquid private key) and `owner` address in the input. The key is used only for signing the current request and is never stored server-side.
 - **Polymarket trades use signing pages**: `poly-buy` and `poly-sell` generate EIP-712 signing pages. Open the returned `preview_url` in your wallet browser to sign — your private key never leaves your wallet.
+
+---
+
+**Maintainer**: Antalpha AI Team  
+**Registry**: https://clawhub.com/skills/antalpha-ai-setup  
+**License**: MIT
