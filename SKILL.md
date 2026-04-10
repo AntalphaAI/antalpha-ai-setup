@@ -2,7 +2,7 @@
 name: antalpha-ai-setup
 description: >
   Install and configure the Antalpha Skills MCP server. Provides 60+ Web3 tools for DEX swaps, smart money tracking, Polymarket prediction markets, Hyperliquid perpetuals, and DeFi analytics.
-version: 1.1.0
+version: 1.2.0
 author: antalpha
 homepage: https://www.antalpha.com/
 ---
@@ -11,7 +11,29 @@ homepage: https://www.antalpha.com/
 
 Connect your AI agent to Antalpha's Web3 unified gateway — 60+ tools covering DEX swaps, smart money signals, Polymarket prediction markets, Hyperliquid perpetual trading, DeFi investment discovery, and EVM/BTC settlement intelligence.
 
-## ⚡ Quick Install (OpenClaw)
+## ⚡ Quick Install
+
+### Option 1: mcporter (Recommended)
+
+```bash
+npx mcporter list https://mcp-skills.ai.antalpha.com/mcp --name antalpha
+```
+
+Output:
+
+```
+✓ MCP server "antalpha" connected
+
+→ Registering agent...
+ ✓ agent_id: "a3f1c8e7-4d2b-4a9f-b6e5-7c8d9e0f1a2b"
+ ✓ api_key: "sk_4f7a2e...b2c3d4e5f6a7b8c9d"
+
+ 62 tools ready.
+```
+
+> Add the returned `agent_id` and `api_key` to your MCP client config.
+
+### Option 2: OpenClaw Skill Install
 
 ```bash
 clawhub install antalpha-ai-setup
