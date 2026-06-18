@@ -63,9 +63,9 @@ https://mcp-skills.ai.antalpha.com/mcp
 - **DEX Swaps** — swap-quote, swap-full, smart-swap-* — *"Get a quote for 1 ETH to USDC"*
 - **Smart Money** — smart-money-signal, smart-money-watch — *"Show whale trading signals"*
 - **Polymarket** — poly-trending, poly-buy, poly-master-* — *"What's trending on Polymarket?"*
-- **Hyperliquid** — hl-positions, hl-limit-order, hl-market-order — *"Show my perp positions"*
+- **Hyperliquid** — hyperliquid-positions, hyperliquid-limit-order, hyperliquid-market-order — *"Show my perp positions"*
 - **DeFi** — investor_discover, investor_analyze — *"Find stablecoin yields above 5%"*
-- **Settlement** — settlement-gas-prediction, settlement-track-tx — *"What's the gas on Arbitrum?"*
+- **Settlement** — settlement-gas, settlement-track-tx — *"What's the gas on Arbitrum?"*
 
 ## Related
 
@@ -137,9 +137,9 @@ https://mcp-skills.ai.antalpha.com/mcp
 - **DEX 兑换** — swap-quote、swap-full、smart-swap-* — *"查询 1 ETH 兑换 USDC 的报价"*
 - **聪明钱追踪** — smart-money-signal、smart-money-watch — *"查看鲸鱼交易信号"*
 - **Polymarket 预测市场** — poly-trending、poly-buy、poly-master-* — *"当前 Polymarket 热门市场有哪些？"*
-- **Hyperliquid 永续合约** — hl-positions、hl-limit-order、hl-market-order — *"查看我的永续仓位"*
+- **Hyperliquid 永续合约** — hyperliquid-positions、hyperliquid-limit-order、hyperliquid-market-order — *"查看我的永续仓位"*
 - **DeFi 投资** — investor_discover、investor_analyze — *"发现年化 5% 以上的稳定币机会"*
-- **链上结算** — settlement-gas-prediction、settlement-track-tx — *"查询 Arbitrum 当前 gas 费"*
+- **链上结算** — settlement-gas、settlement-track-tx — *"查询 Arbitrum 当前 gas 费"*
 
 ## 相关链接
 
