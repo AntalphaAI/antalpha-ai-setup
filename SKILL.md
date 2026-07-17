@@ -94,7 +94,7 @@ Try one of these example prompts to verify functionality:
 | "Get Hyperliquid account info for address" | Retrieves account details from Hyperliquid |
 
 ## Available Tools
-The server currently exposes **129 tools** (120+). This list is generated from the live MCP `tools/list` endpoint — run `npx mcporter list https://mcp-skills.ai.antalpha.com/mcp` for the always-current set.
+The server currently exposes **129 tools** (120+). This list is generated from the live MCP `tools/list` endpoint — run `npx mcporter list https://mcp-skills.ai.antalpha.com/mcp` for the always-current set. Tools shown as `—` return no description from the server.
 ### Session
 | Tool | Description |
 |------|-------------|
@@ -113,10 +113,10 @@ The server currently exposes **129 tools** (120+). This list is generated from t
 | smart-swap-list | List all smart swap orders for a wallet: active (in auction), filled, cancelled |
 | smart-swap-status | Check current execution status of a smart swap order: auction progress, fill percentage, exe… |
 | smart-swap-cancel | Check the cancellation or expiry status of a 1inch Fusion smart swap order. Fusion orders au… |
-| jupiter-swap-quote | Get a Solana (Jupiter) swap quote: expected output, price impact and route |
-| jupiter-swap-tokens | List supported Solana tokens for Jupiter swaps: symbol, mint address, decimals |
-| jupiter-trigger-list | List Jupiter trigger (limit) orders for a Solana wallet |
-| xstock-pool-snapshot | Snapshot of an xStock tokenized-equity liquidity pool on Solana |
+| jupiter-swap-quote | — |
+| jupiter-swap-tokens | — |
+| jupiter-trigger-list | — |
+| xstock-pool-snapshot | — |
 | get_trade_quotes | Fetch and compare executable trade-route quotes for a single spot/futures trade intent acros… |
 | execute_trade | Execute a previously quoted on-chain trade route by producing a non-custodial browser signin… |
 
@@ -283,7 +283,7 @@ The server currently exposes **129 tools** (120+). This list is generated from t
 | event-feed-detail | Fetch the complete card for ONE event using a known eventId. Returns: heatScore, |
 | event-feed-prompts | Return 2–3 AI-generated follow-up question strings for a known eventId. For UI chip renderin… |
 | oracle-match-search | Find a specific 2026 FIFA World Cup match (single fixture, e.g. 'Portugal vs Croatia') by te… |
-| oracle-event-detail | Get full detail for one 2026 FIFA World Cup prediction event |
+| oracle-event-detail | — |
 
 ### Meme & Web Search
 | Tool | Description |
